@@ -37,7 +37,9 @@ app.get("/classify", (request, response) => {
 
 app.post("/classifyHand", async (request, response) => {
     let {number1, suit1, number2, suit2, number3, suit3, number4, suit4, number5, suit5} = request.body;
-    handType = "None"
+    let handType = "High Card"
+
+    // TODO: Add logic to determine actual handType
 
     const data = {
         hand: {
@@ -65,6 +67,15 @@ app.post("/classifyHand", async (request, response) => {
         handType: handType
     };
     await client.db(databaseAndCollection.db).collection(databaseAndCollection.collection).insertOne(data);
+    
+    try {
+        const jokeResponse = await fetch("https://official-joke-api.appspot.com/random_joke");
+        const jokeData = await jokeResponse.json();
+        
+        data.joke = {setup: jokeData.setup, punchline: jokeData.punchline};
+    } catch (error) {
+        data.joke = {setup: "Where did the API go to eat?", punchline: "To the RESTaurant."};
+    }
 
     response.render("classifyHand", data);
 });

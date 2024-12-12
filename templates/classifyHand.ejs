@@ -4,15 +4,46 @@
 <head>
 	<meta charset="utf-8" />
 	<title>Hand Classification</title>
+    <style>
+        h1, h3 {
+            margin-left: 10px;
+        }
+
+        div {
+            margin-left: 15px;
+        }
+
+        input {
+            font-size: 14px;
+            background-color: black;
+            color: white;
+            padding: 6px 15px;
+            border: none;
+            border-radius: 10px;
+            margin-left: 15px;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        input:hover {
+            background-color: darkred;
+        }
+    </style>
 </head>
 
 <body>
-	<h1>Applicants Data</h1>
+	<h1>Hand Classification</h1>
 	<div>
-		<strong>Hand Type: </strong><%- handType %><br>
+		<strong>Hand Type: </strong><i><%- handType %></i><br>
 	</div>
-    <h1>Joke of the second:</h1>
-    <a href="/">HOME</a>
+    <h3>Spontaneous Joke!</h3>
+    <img src="/CrazyLaugh.jpg" alt="laughing face" width="150" height="150"><br>
+    <div>
+		<%- joke.setup %><br>
+        <%- joke.punchline %>
+	</div>
+    <br><br>
+    <a href="/"><input type="button" value="Home"></a>
 </body>
 
 </html>
