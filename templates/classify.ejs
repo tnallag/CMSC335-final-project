@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Classify Hand</title>
+    <style>
+        h1 {
+            margin-left: 10px;
+        }
+
+        label {
+            margin-left: 15px;
+        }
+
+        input {
+            font-size: 14px;
+            background-color: black;
+            color: white;
+            padding: 6px 15px;
+            border: none;
+            border-radius: 10px;
+            margin-left: 15px;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        input:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Classify Hand</h1>
+    <form action="/classifyHand" method="post" id="form">
+        <label for="card1">Card 1:</label>
+        <select name="number1" required>
+            <option value="" disabled selected>Select Number</option>
+            <option value="A">A</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="J">J</option>
+            <option value="Q">Q</option>
+            <option value="K">K</option>
+        </select>
+        <select name="suit1" required>
+            <option value="" disabled selected>Select Suit</option>
+            <option value="hearts">Hearts</option>
+            <option value="diamonds">Diamonds</option>
+            <option value="clubs">Clubs</option>
+            <option value="spades">Spades</option>
+        </select>
+        <br><br>
+        <label for="card2">Card 2:</label>
+        <select name="number2" required>
+            <option value="" disabled selected>Select Number</option>
+            <option value="A">A</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="J">J</option>
+            <option value="Q">Q</option>
+            <option value="K">K</option>
+        </select>
+        <select name="suit2" required>
+            <option value="" disabled selected>Select Suit</option>
+            <option value="hearts">Hearts</option>
+            <option value="diamonds">Diamonds</option>
+            <option value="clubs">Clubs</option>
+            <option value="spades">Spades</option>
+        </select>
+        <br><br>
+        <label for="card3">Card 3:</label>
+        <select name="number3" required>
+            <option value="" disabled selected>Select Number</option>
+            <option value="A">A</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="J">J</option>
+            <option value="Q">Q</option>
+            <option value="K">K</option>
+        </select>
+        <select name="suit3" required>
+            <option value="" disabled selected>Select Suit</option>
+            <option value="hearts">Hearts</option>
+            <option value="diamonds">Diamonds</option>
+            <option value="clubs">Clubs</option>
+            <option value="spades">Spades</option>
+        </select>
+        <br><br>
+        <label for="card4">Card 4:</label>
+        <select name="number4" required>
+            <option value="" disabled selected>Select Number</option>
+            <option value="A">A</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="J">J</option>
+            <option value="Q">Q</option>
+            <option value="K">K</option>
+        </select>
+        <select name="suit4" required>
+            <option value="" disabled selected>Select Suit</option>
+            <option value="hearts">Hearts</option>
+            <option value="diamonds">Diamonds</option>
+            <option value="clubs">Clubs</option>
+            <option value="spades">Spades</option>
+        </select>
+        <br><br>
+        <label for="card5">Card 5:</label>
+        <select name="number5" required>
+            <option value="" disabled selected>Select Number</option>
+            <option value="A">A</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="J">J</option>
+            <option value="Q">Q</option>
+            <option value="K">K</option>
+        </select>
+        <select name="suit5" required>
+            <option value="" disabled selected>Select Suit</option>
+            <option value="hearts">Hearts</option>
+            <option value="diamonds">Diamonds</option>
+            <option value="clubs">Clubs</option>
+            <option value="spades">Spades</option>
+        </select>
+      <br><br>
+      <input type="reset">
+      <input type="submit" value="Classify Hand" />
+    </form>
+    <br><br>
+    <a href="/"><input type="button" value="Home"></a>
+  </body>
+</html>
