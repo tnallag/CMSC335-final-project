@@ -128,67 +128,29 @@ app.post("/classifyHand", async (request, response) => {
     response.render("classifyHand", data);
 });
 
-app.get("/reviewApplication", (request, response) => {
-    response.render("reviewApplication");
-});
+app.get("/pastHands", async (request, response) => {
+    let table = '<table border="double"><tr><th>Card 1</th><th>Card 2</th><th>Card 3</th><th>Card 4</th><th>Card 5</th><th>Hand Type</th></tr>'
 
-app.post("/processReviewApplication", async (request, response) => {
-    let {email} = request.body;
-    let filter = {email: email};
-    let data = {
-        name: "NONE",
-        email: "NONE",
-        gpa: "NONE",
-        bgInfo: "NONE"
-    };
-
-    const result = await client.db(databaseAndCollection.db).collection(databaseAndCollection.collection).findOne(filter);
-    if (result) {
-        let {name, gpa, bgInfo} = result;
-
-        data = {
-            name: name,
-            email: email,
-            gpa: gpa.toFixed(1),
-            bgInfo: bgInfo
-        };
-    }
-    response.render("processApplication", data);
-});
-
-app.get("/adminGPA", (request, response) => {
-    response.render("adminGPA");
-});
-
-app.post("/processAdminGPA", async (request, response) => {
-    let {gpa} = request.body;
-    let filter = {gpa: {$gte: Number(gpa)}};
-    let table = '<table border="double"><tr><th>Name</th><th>GPA</th></tr>'
-
-    const result = await client.db(databaseAndCollection.db).collection(databaseAndCollection.collection).find(filter);
+    const result = await client.db(databaseAndCollection.db).collection(databaseAndCollection.collection).find({});
     for await (let doc of result) {
-        let {name, gpa} = doc;
-        table += `<tr><td>${name}</td><td>${gpa.toFixed(1)}</td></tr>`
+        let {hand, handType} = doc;
+        let {card1, card2, card3, card4, card5} = hand;
+        let raw_cards = [card1, card2, card3, card4, card5];
+
+        let cards = [];
+        for (let card = 0; card < raw_cards.length; card++) {
+            cards.push(raw_cards[card].number + " of " + raw_cards[card].suit);
+        }
+        [card1, card2, card3, card4, card5] = cards;
+
+        table += `<tr><td>${card1}</td><td>${card2}</td><td>${card3}</td><td>${card4}</td><td>${card5}</td><td>${handType}</td></tr>`
     }
 
     const data = {
         table: table + "</table>"
     }
 
-    response.render("processAdminGPA", data);
-});
-
-app.get("/adminRemove", (request, response) => {
-    response.render("adminRemove");
-});
-
-app.post("/processAdminRemove", async (request, response) => {
-    const result = await client.db(databaseAndCollection.db).collection(databaseAndCollection.collection).deleteMany({});
-    const data = {
-        numRemoved: result.deletedCount
-    }
-
-    response.render("processAdminRemove", data);
+    response.render("pastHands", data);
 });
 
 const prompt = "Stop to shutdown the server: ";

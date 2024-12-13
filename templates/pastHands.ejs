@@ -3,10 +3,18 @@
 
 <head>
 	<meta charset="utf-8" />
-	<title>Poker Hand Classifier</title>
+	<title>Past Hands</title>
     <style>
         h1 {
             margin-left: 10px;
+        }
+
+        div {
+            margin-left: 15px;
+        }
+
+        td {
+            padding: 5px;
         }
 
         input {
@@ -28,10 +36,12 @@
 </head>
 
 <body>
-	<h1>Poker Hand Classifier</h1>
-    <img src="/images/PlayingCards.png" alt="playing cards" width="325" height="325"><br><br>
-    <a href="/classify"><input type="button" value="Classify Hand"></a>
-    <a href="/pastHands"><input type="button" value="Past Hands"></a>
+	<h1>Past Hands</h1>
+    <div>
+	    <%- table %><br>
+    </div>
+    <br><br>
+    <a href="/"><input type="button" value="Home"></a>
 </body>
 
 </html>
