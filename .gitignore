@@ -1,3 +1,4 @@
 # Ignore node_modules directory and package-lock.json
 node_modules/
 package-lock.json
+.env
