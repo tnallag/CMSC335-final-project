@@ -6,7 +6,7 @@
 
 **GitHub Repo Link:** https://github.com/tnallag/CMSC335-final-project
 
-**Deployment Link:** 
+**Deployment Link:** https://poker-hand-classifier.onrender.com/
 
 **YouTube Video Link:** 
 
