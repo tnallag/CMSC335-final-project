@@ -37,9 +37,57 @@ app.get("/classify", (request, response) => {
 
 app.post("/classifyHand", async (request, response) => {
     let {number1, suit1, number2, suit2, number3, suit3, number4, suit4, number5, suit5} = request.body;
-    let handType = "High Card"
 
-    // TODO: Add logic to determine actual handType
+    const numbers = [number1, number2, number3, number4, number5];
+    const suits = [suit1, suit2, suit3, suit4, suit5];
+    const numberValues = numbers.map(num => {
+        if (num === "A") return 14;
+        if (num === "K") return 13;
+        if (num === "Q") return 12;
+        if (num === "J") return 11;
+        return parseInt(num, 10);
+    }).sort((a, b) => a - b);
+
+    const isFlush = suits => suits.every(suit => suit === suits[0]);
+    const isStraight = nums => {
+        if (nums.join(', ') === '2, 3, 4, 5, 14') {
+            return true;
+        }
+        return nums.every((num, i, arr) => i === 0 || num === arr[i - 1] + 1);
+    };
+
+    const numCounts = {};
+    numberValues.forEach(num => {
+        numCounts[num] = (numCounts[num] || 0) + 1;
+    });
+    const countValues = Object.values(numCounts).sort((a, b) => b - a);
+
+    const flush = isFlush(suits);
+    const straight = isStraight(numberValues);
+    const royal = straight && numberValues[0] === 10 && flush;
+
+    let handType = "";
+    if (royal) {
+        handType = "Royal Flush";
+    } else if (straight && flush) {
+        handType = "Straight Flush";
+    } else if (countValues[0] === 4) {
+        handType = "Four of a Kind";
+    } else if (countValues[0] === 3 && countValues[1] === 2) {
+        handType = "Full House";
+    } else if (flush) {
+        handType = "Flush";
+    } else if (straight) {
+        handType = "Straight";
+    } else if (countValues[0] === 3) {
+        handType = "Three of a Kind";
+    } else if (countValues[0] === 2 && countValues[1] === 2) {
+        handType = "Two Pair";
+    } else if (countValues[0] === 2) {
+        handType = 'Pair';
+    } else {
+        handType = "High Card";
+    }
 
     const data = {
         hand: {
