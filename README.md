@@ -1,6 +1,6 @@
 **Submitted by:** Teja Nallagorla (tnallag)
 
-**Group Members:** Teja Nallagorla (tnallag), Varun Das (vdas)
+**Group Members:** Teja Nallagorla (tnallag), Varun Das (vdas), Surya Udayshankar (suryau)
 
 **App Description:** Allows users to input a set of five playing cards and determines the corresponding poker hand. Also stores a record of all past hands for future reference.
 
