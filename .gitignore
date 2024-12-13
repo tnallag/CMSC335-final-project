@@ -1,4 +1,4 @@
-# Ignore node_modules directory and package-lock.json
+# Ignore node_modules directory, package-lock.json, and .env
 node_modules/
 package-lock.json
 .env
