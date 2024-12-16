@@ -8,7 +8,7 @@
 
 **Deployment Link:** https://poker-hand-classifier.onrender.com/
 
-**YouTube Video Link:** 
+**YouTube Video Link:** https://www.youtube.com/watch?v=09KLlahbAJw
 
 **APIs:** [Official Joke API](https://github.com/15Dkatz/official_joke_api)
 
